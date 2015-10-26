@@ -6,7 +6,7 @@ class Tienda
 
   def interfaz
     puts "----------------------------------------------"
-    puts "Welcome to the online store: #{@nombre}" 
+    puts "Welcome to the online store: #{@nombre}, (#{mail})" 
     puts "----------------------------------------------"
     puts "Select option number"
     puts "1. Login"
@@ -36,6 +36,20 @@ class Tienda
     end
   end
 
+  def mail
+    arr = @nombre.split("")
+    p arr
+    arr.each do |x|
+      x.downcase!
+      if x == " "
+        x.replace "-"
+      end
+    end
+    p arr
+    str = arr.join
+    "www.#{str}.com"
+  end
+
   def register
     puts "Ingresa tu email:"
     email = gets.chomp
@@ -63,7 +77,7 @@ class Tienda
   end
 
   def haz_camisa
-    puts "Llegaste a hacer tu camisa"
+    puts "Llegaste a hacer camisa"
   end
 
 end
@@ -73,6 +87,14 @@ class User
   def initialize(email, password)
     @email = email
     @password = password
+  end
+end
+
+class Producto
+  attr_accessor :palabras, :color
+  def initialize(palabras, color)
+    @palabras = palabras
+    @color = color
   end
 end
 
