@@ -30,7 +30,7 @@ class Tienda
     puts "Password:"
     password = gets.chomp
     if @hash_users.has_key?(email) && @hash_users[email] == password
-      haz_camisa
+      haz_producto
     else
       puts "Usuario o contraseña incorrectos."
     end
@@ -76,8 +76,14 @@ class Tienda
     end
   end
 
-  def haz_camisa
-    puts "Llegaste a hacer camisa"
+  def haz_producto
+    puts "Crea una camisa"
+    puts "¿Qué quieres que diga la camisa?"
+    palabras = gets.chomp
+    puts "¿De qué color quieres que sea la camisa?"
+    color = gets.chomp
+    producto = Producto.new(palabras, color)
+    producto.to_s
   end
 
 end
@@ -95,6 +101,10 @@ class Producto
   def initialize(palabras, color)
     @palabras = palabras
     @color = color
+  end
+
+  def to_s
+    puts "Creaste un producto camisa con las palabras '#{palabras}' del color #{color}"
   end
 end
 
